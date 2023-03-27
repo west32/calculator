@@ -15,7 +15,7 @@ public class HelloWorldController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @GetMapping("/say-hello-to")
+    @PostMapping("/say-hello-to")
     @ResponseBody
     public Greeting sayHello(@RequestParam(name="name", required=false, defaultValue="Stranger") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
