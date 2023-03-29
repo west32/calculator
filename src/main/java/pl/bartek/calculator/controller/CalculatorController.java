@@ -25,9 +25,5 @@ public class CalculatorController {
 //    TODO
 //    przeniesc Primenumbers z nowego brancha ktory odbbija z mastera
 //    utworz pr z tego co dzis
-
-
 //    return Collection w parametrze ilosc liczb fibonacciego
-
-
 }
