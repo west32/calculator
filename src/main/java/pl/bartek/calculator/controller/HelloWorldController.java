@@ -1,11 +1,10 @@
 package pl.bartek.calculator.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.bartek.calculator.Greeting;
+import pl.bartek.calculator.Greetings;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -17,8 +16,8 @@ public class HelloWorldController {
 
     @PostMapping("/say-hello-to")
     @ResponseBody
-    public Greeting sayHello(@RequestParam(name="name", required=false, defaultValue="Stranger") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    public Greetings sayHello(@RequestParam(name="name", required=false, defaultValue="Stranger") String name) {
+        return new Greetings(counter.incrementAndGet(), String.format(template, name));
     }
 
 }
