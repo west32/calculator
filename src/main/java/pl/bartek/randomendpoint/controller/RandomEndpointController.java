@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bartek.randomendpoint.service.RandomEndpointService;
 @RestController
-public class RandomEndpointController {
+public class RandomEndpointController{
     @GetMapping("/random-endpoint")
     @ResponseBody
 //    public RandomEndpointService randomEndpoint(@RequestParam(name = "name", required = false, defaultValue = "anymous")String name){
