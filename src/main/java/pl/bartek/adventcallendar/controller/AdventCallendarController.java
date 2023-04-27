@@ -13,9 +13,7 @@ public class AdventCallendarController {
 
     @PostMapping("/advent-callendar")
     @ResponseBody
-
     public int result(@RequestBody List<Integer> data ){
-
         ServiceAdventCallendar serviceAdventCallendar = new ServiceAdventCallendar();
         return serviceAdventCallendar.countIncreasment(data);
     }
