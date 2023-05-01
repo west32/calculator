@@ -1,18 +1,16 @@
 package pl.bartek.randomendpoint.service;
 
+import pl.bartek.randomendpoint.controller.Sex;
+
+import java.util.Objects;
+
 public class RandomEndpointService {
-    private final String Hello;
-    private final int id;
+    public Sex giveMeSex(String name){
+        if (Objects.equals(name, "Łukasz")){
+            return Sex.Male;
+        } else if(Objects.equals(name, "Asia")){
+            return Sex.Female;
+        }else return Sex.HCWD;
 
-    public RandomEndpointService(String Hello, int id) {
-        this.Hello = Hello;
-        this.id = id;
-    }
-    public String getHello() {
-        return Hello;
-    }
-
-    public int getId() {
-        return id;
     }
 }

@@ -1,18 +1,20 @@
 package pl.bartek.randomendpoint.controller;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bartek.randomendpoint.service.RandomEndpointService;
+
 @RestController
 public class RandomEndpointController{
+    private final RandomEndpointService randomEndpointService = new RandomEndpointService();
     @GetMapping("/random-endpoint")
-    @ResponseBody
-//    public RandomEndpointService randomEndpoint(@RequestParam(name = "name", required = false, defaultValue = "anymous")String name){
-//        return new RandomEndpointService("Bartek", 1);
-//    }
-    public String hello(){
-        return "Hello";
+    public RandomEndpointResponse randomEndpoint(@RequestParam(name = "name", required = false, defaultValue = "anymous")String name){
+        RandomEndpointService randomEndpointService = new RandomEndpointService();
+        Sex sex = randomEndpointService.giveMeSex(name);
+        return new RandomEndpointResponse(sex);
     }
 }
+
+//TODO
+//1 dodac pole płeć do randomendpoint response i ją zwrócic
+//2 service ma zwracac enuma male lub female a nie stringa
