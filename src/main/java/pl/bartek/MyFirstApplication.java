@@ -1,13 +1,13 @@
-package pl.bartek.calculator;
+package pl.bartek;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CalculatorApplication {
+public class MyFirstApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CalculatorApplication.class, args);
+		SpringApplication.run(MyFirstApplication.class, args);
 	}
 
 }
