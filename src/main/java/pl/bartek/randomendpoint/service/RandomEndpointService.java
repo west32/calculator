@@ -1,7 +1,5 @@
 package pl.bartek.randomendpoint.service;
-
 import pl.bartek.randomendpoint.controller.Sex;
-
 import java.util.Objects;
 
 public class RandomEndpointService {
