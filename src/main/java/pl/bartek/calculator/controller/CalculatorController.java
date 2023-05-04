@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pl.bartek.calculator.CalculatorApplication;
 import pl.bartek.calculator.service.ServiceFibonacciCount;
 
 import java.util.Collection;
