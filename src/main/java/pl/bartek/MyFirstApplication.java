@@ -12,7 +12,3 @@ public class MyFirstApplication {
 
 }
 
-//TODO
-//podpiac ten projekt do nowego repo
-//poprawiac endpoint (helloworld/ czasownik) zeby z  konwencją z ksiazki w osobnym pullrequescie :D
-//DLa Michcia i Pytka wytlumaczyc Bartkowi dlaczego zmiana portu na 9090 itp
