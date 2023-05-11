@@ -1,8 +1,6 @@
 # Moje pierwsze API
 ## TODO
 ### zrobić API do wyszukiwania modeli aut
-- wyszukiwanie po roczniku
-- po czesci nazwie modelowej (np audi a3 lub axx)
-- wyniki zwracam w jsonie
-- dane ze strony https://www.back4app.com/database/back4app/car-make-model-dataset/audi
-- 
+- dlaczego http://localhost:9090/find-car?fromYear=2000 daje pusta liste a http://localhost:9090/find-car?fromYear=2000&toYear=3000 daje rezultat
+- naprawic ten request http://localhost:9090/find-car?model=a3&category=sedan 
+- uproscic logike ifa

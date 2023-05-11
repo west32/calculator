@@ -11,8 +11,13 @@ import java.util.List;
 public class SearchCarController {
     private final SearchCarService searchCarService = new SearchCarService();
     @GetMapping("/find-car")
-    SearchCarResponse searchCar(@RequestParam(name = "query",required = false,defaultValue = "") String query){
-        List<Car> queryCars = searchCarService.findCar(query);
+    SearchCarResponse searchCar(
+            @RequestParam(name = "model", required = false, defaultValue = "")String model,
+            @RequestParam(name = "category",required = false, defaultValue = "") String category,
+            @RequestParam(name = "fromYear", required = false, defaultValue = "0") int fromYear,
+            @RequestParam(name = "toYear", required = false, defaultValue = "0") int toYear
+    ){
+        List<Car> queryCars = searchCarService.findCar(model, category, fromYear, toYear);
         return new SearchCarResponse(queryCars);
     }
 }
