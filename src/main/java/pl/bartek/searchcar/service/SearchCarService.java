@@ -1,12 +1,11 @@
 package pl.bartek.searchcar.service;
 import pl.bartek.searchcar.Car;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+
+import java.util.*;
 
 public class SearchCarService {
     private final List<Car> carsRepository = new ArrayList<>();
+
 
 
     public SearchCarService() {
@@ -24,12 +23,27 @@ public class SearchCarService {
 
     public List<Car> findCar(String model, String category, int fromYear, int toYear){
         List<Car> queryCars = new ArrayList<>();
+        Set<String> usedParams = new HashSet<>();
+        if(!Objects.equals(model,"")){
+            usedParams.add("model");
+        }
+        if(!Objects.equals(category,"")){
+            usedParams.add("category");
+        }
+        if(fromYear != 0){
+            usedParams.add("fromYear");
+        }
+        if(toYear != Integer.MAX_VALUE){
+            usedParams.add("toYear");
+        }
+        if(usedParams.isEmpty()){
+            return queryCars;
+        }
         for (Car car: carsRepository) {
-            if (!Objects.equals(model, "") && car.getModel().toLowerCase().contains(model)){
-                queryCars.add(car);
-            }else if (!Objects.equals(category, "") && car.getCategory().toLowerCase().contains(category)) {
-                queryCars.add(car);
-            }else if (car.getYear()>= fromYear && car.getYear() <= toYear){
+            if ( (!usedParams.contains("model")|| car.getModel().toLowerCase().contains(model))
+            &(!usedParams.contains("category")|| car.getCategory().toLowerCase().contains(category))
+            &(!usedParams.contains("fromYear")|| car.getYear() >= fromYear)
+            &(!usedParams.contains("toYear"))){
                 queryCars.add(car);
             }
         }

@@ -14,7 +14,7 @@ public class SearchCarController {
     SearchCarResponse searchCar(
             @RequestParam(name = "model", required = false, defaultValue = "")String model,
             @RequestParam(name = "category",required = false, defaultValue = "") String category,
-            @RequestParam(name = "fromYear", required = false, defaultValue = "" + Integer.MIN_VALUE ) int fromYear,
+            @RequestParam(name = "fromYear", required = false, defaultValue = "0" ) int fromYear,
             @RequestParam(name = "toYear", required = false, defaultValue = "" + Integer.MAX_VALUE) int toYear
     ){
         List<Car> queryCars = searchCarService.findCar(model, category, fromYear, toYear);
