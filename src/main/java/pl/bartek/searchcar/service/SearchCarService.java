@@ -21,7 +21,7 @@ public class SearchCarService {
         carsRepository.add(new Car("A3","Sedan, Convertible", 2017));
     }
 
-    public List<Car> findCar(String model, String category, int fromYear, int toYear){
+    public List<Car> findCar(String model, String category, int fromYear, Integer toYear){
         List<Car> queryCars = new ArrayList<>();
         Set<String> usedParams = new HashSet<>();
         if(!Objects.equals(model,"")){
@@ -33,7 +33,7 @@ public class SearchCarService {
         if(fromYear != 0){
             usedParams.add("fromYear");
         }
-        if(toYear != Integer.MAX_VALUE){
+        if(toYear != null){
             usedParams.add("toYear");
         }
         if(usedParams.isEmpty()){
