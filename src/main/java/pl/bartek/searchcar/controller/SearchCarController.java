@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bartek.searchcar.Car;
+import pl.bartek.searchcar.service.FindCarCommand;
 import pl.bartek.searchcar.service.SearchCarService;
 import java.util.List;
+
 @RestController
 public class SearchCarController {
     private final SearchCarService searchCarService = new SearchCarService();
+
     @GetMapping("/find-car")
     SearchCarResponse searchCar(
             @RequestParam(name = "model", required = false, defaultValue = "")String model,
@@ -18,8 +21,8 @@ public class SearchCarController {
             @RequestParam(name = "fromYear", required = false, defaultValue = "0" ) int fromYear,
             @PathVariable(name = "toYear", required = false) Integer toYear
     ) {
-
-            List<Car> queryCars = searchCarService.findCar(model, category, fromYear, toYear);
+            FindCarCommand findCarCommand = new FindCarCommand(model, category, fromYear, toYear);
+            List<Car> queryCars = searchCarService.findCar(findCarCommand);
             return new SearchCarResponse(queryCars);
     }
 }

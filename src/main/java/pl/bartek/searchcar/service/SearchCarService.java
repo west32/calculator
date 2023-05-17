@@ -5,8 +5,7 @@ import java.util.*;
 
 public class SearchCarService {
     private final List<Car> carsRepository = new ArrayList<>();
-
-
+    private FindCarCommand findCarCommand;
 
     public SearchCarService() {
         carsRepository.add(new Car("100","Wagon, Sedan", 1994));
@@ -21,28 +20,28 @@ public class SearchCarService {
         carsRepository.add(new Car("A3","Sedan, Convertible", 2017));
     }
 
-    public List<Car> findCar(String model, String category, int fromYear, Integer toYear){
+    public List<Car> findCar(FindCarCommand findCarCommand){
         List<Car> queryCars = new ArrayList<>();
         Set<String> usedParams = new HashSet<>();
-        if(!Objects.equals(model,"")){
+        if(!Objects.equals(findCarCommand.getModel(),"")){
             usedParams.add("model");
         }
-        if(!Objects.equals(category,"")){
+        if(!Objects.equals(findCarCommand.getCategory(),"")){
             usedParams.add("category");
         }
-        if(fromYear != 0){
+        if(findCarCommand.getFromYear() != null){
             usedParams.add("fromYear");
         }
-        if(toYear != null){
+        if(findCarCommand.getToYear() != null){
             usedParams.add("toYear");
         }
         if(usedParams.isEmpty()){
             return queryCars;
         }
         for (Car car: carsRepository) {
-            if ( (!usedParams.contains("model")|| car.getModel().toLowerCase().contains(model))
-            &(!usedParams.contains("category")|| car.getCategory().toLowerCase().contains(category))
-            &(!usedParams.contains("fromYear")|| car.getYear() >= fromYear)
+            if ( (!usedParams.contains("model")|| car.getModel().toLowerCase().contains(findCarCommand.getModel()))
+            &(!usedParams.contains("category")|| car.getCategory().toLowerCase().contains(findCarCommand.getCategory()))
+            &(!usedParams.contains("fromYear")|| car.getYear() >= findCarCommand.getFromYear())
             &(!usedParams.contains("toYear"))){
                 queryCars.add(car);
             }
