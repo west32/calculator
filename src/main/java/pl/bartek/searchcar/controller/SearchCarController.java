@@ -16,10 +16,10 @@ public class SearchCarController {
 
     @GetMapping("/find-car")
     SearchCarResponse searchCar(
-            @RequestParam(name = "model", required = false, defaultValue = "")String model,
-            @RequestParam(name = "category",required = false, defaultValue = "") String category,
-            @RequestParam(name = "fromYear", required = false, defaultValue = "0" ) int fromYear,
-            @PathVariable(name = "toYear", required = false) Integer toYear
+            @RequestParam(name = "model", required = false)String model,
+            @RequestParam(name = "category",required = false) String category,
+            @RequestParam(name = "fromYear", required = false ) Integer fromYear,
+            @RequestParam (name = "toYear", required = false) Integer toYear
     ) {
             FindCarCommand findCarCommand = new FindCarCommand(model, category, fromYear, toYear);
             List<Car> queryCars = searchCarService.findCar(findCarCommand);

@@ -23,10 +23,10 @@ public class SearchCarService {
     public List<Car> findCar(FindCarCommand findCarCommand){
         List<Car> queryCars = new ArrayList<>();
         Set<String> usedParams = new HashSet<>();
-        if(!Objects.equals(findCarCommand.getModel(),"")){
+        if(findCarCommand.getModel() != null){
             usedParams.add("model");
         }
-        if(!Objects.equals(findCarCommand.getCategory(),"")){
+        if(findCarCommand.getCategory() != null){
             usedParams.add("category");
         }
         if(findCarCommand.getFromYear() != null){
@@ -42,7 +42,7 @@ public class SearchCarService {
             if ( (!usedParams.contains("model")|| car.getModel().toLowerCase().contains(findCarCommand.getModel()))
             &(!usedParams.contains("category")|| car.getCategory().toLowerCase().contains(findCarCommand.getCategory()))
             &(!usedParams.contains("fromYear")|| car.getYear() >= findCarCommand.getFromYear())
-            &(!usedParams.contains("toYear"))){
+            &(!usedParams.contains("toYear")|| car.getYear() <= findCarCommand.getToYear())){
                 queryCars.add(car);
             }
         }
