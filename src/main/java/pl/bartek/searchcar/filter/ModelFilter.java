@@ -12,7 +12,7 @@ public class ModelFilter implements CarFilter{
     @Override
     public boolean match(Car car) {
         String carModel = car.getModel();
-        return model != null && carModel.contains(model);
+        return model != null && carModel.toLowerCase().contains(model);
     }
 
 }

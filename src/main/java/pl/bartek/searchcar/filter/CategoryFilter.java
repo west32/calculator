@@ -12,7 +12,7 @@ public class CategoryFilter implements CarFilter {
     @Override
     public boolean match (Car car){
         String carCategory = car.getCategory();
-        return category != null && carCategory.contains(category);
+        return category != null && carCategory.toLowerCase().contains(category);
     }
 
 }
