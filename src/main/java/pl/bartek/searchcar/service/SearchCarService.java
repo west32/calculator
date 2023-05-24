@@ -1,9 +1,9 @@
 package pl.bartek.searchcar.service;
+
 import pl.bartek.searchcar.Car;
 import pl.bartek.searchcar.filter.CarFilter;
 import pl.bartek.searchcar.filter.FilterFactory;
 import pl.bartek.searchcar.filter.ModelFilter;
-
 import java.util.*;
 import java.util.logging.Filter;
 
@@ -58,7 +58,4 @@ public class SearchCarService {
         }
         return queryCars;
     }
-
-
 }
-

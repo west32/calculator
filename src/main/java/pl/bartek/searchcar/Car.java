@@ -18,8 +18,8 @@ public class Car {
     public String getCategory() {
         return category;
     }
+
     public int getYear() {
         return year;
     }
-
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 public class SearchCarController {
+
     private final FilterFactory filterFactory = new FilterFactory();
     private final SearchCarService searchCarService = new SearchCarService(filterFactory);
 
