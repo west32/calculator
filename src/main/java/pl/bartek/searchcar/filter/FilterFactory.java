@@ -1,7 +1,5 @@
 package pl.bartek.searchcar.filter;
 
-import pl.bartek.searchcar.filter.CarFilter;
-
 public class FilterFactory {
     public CarFilter createModelFilter (String model){
         return new ModelFilter(model);
@@ -11,12 +9,9 @@ public class FilterFactory {
         return new CategoryFilter(category);
     }
 
-    public CarFilter createFromYearFilter (Integer fromYear){
-        return new FromYearFilter(fromYear);
+    public CarFilter createYearFilter (Integer fromYear, Integer toYear){
+        return new YearFilter(fromYear, toYear);
     }
 
-    public CarFilter createToYearFilter (Integer toYear){
-        return new ToYearFilter(toYear);
-    }
 }
 

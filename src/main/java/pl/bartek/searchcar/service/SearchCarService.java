@@ -38,13 +38,9 @@ public class SearchCarService {
             usedParams.add("category");
             queryFilters.add(filterFactory.createCategoryFilter(findCarCommand.getCategory()));
         }
-        if(findCarCommand.getFromYear() != null){
-            usedParams.add("fromYear");
-            queryFilters.add(filterFactory.createFromYearFilter(findCarCommand.getFromYear()));
-        }
-        if(findCarCommand.getToYear() != null){
-            usedParams.add("toYear");
-            queryFilters.add(filterFactory.createToYearFilter(findCarCommand.getToYear()));
+        if(findCarCommand.getFromYear() != null || findCarCommand.getToYear() != null){
+            usedParams.add("year");
+            queryFilters.add(filterFactory.createYearFilter(findCarCommand.getFromYear(), findCarCommand.getToYear()));
         }
         if(usedParams.isEmpty()){
             return queryCars;
