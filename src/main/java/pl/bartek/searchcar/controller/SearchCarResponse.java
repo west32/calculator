@@ -4,8 +4,10 @@ import pl.bartek.searchcar.Car;
 
 import java.util.List;
 
-public class SearchCarResponse {
+class SearchCarResponse {
     private final List<Car> queryCars;
+
+
     public SearchCarResponse(List<Car> queryCars) {
         this.queryCars = queryCars;
     }
