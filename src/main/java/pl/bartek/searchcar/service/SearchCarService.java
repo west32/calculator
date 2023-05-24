@@ -1,14 +1,19 @@
 package pl.bartek.searchcar.service;
+
 import pl.bartek.searchcar.Car;
-
-
+import pl.bartek.searchcar.filter.CarFilter;
+import pl.bartek.searchcar.filter.FilterFactory;
+import pl.bartek.searchcar.filter.ModelFilter;
 import java.util.*;
+import java.util.logging.Filter;
 
 public class SearchCarService {
     private final List<Car> carsRepository = new ArrayList<>();
     private FindCarCommand findCarCommand;
+    private final FilterFactory filterFactory;
 
-    public SearchCarService() {
+    public SearchCarService(FilterFactory filterFactory) {
+        this.filterFactory = filterFactory;
         carsRepository.add(new Car("100","Wagon, Sedan", 1994));
         carsRepository.add(new Car("100","Wagon, Sedan", 1993));
         carsRepository.add(new Car("100","Wagon, Sedan", 1992));
@@ -23,27 +28,31 @@ public class SearchCarService {
 
     public List<Car> findCar(FindCarCommand findCarCommand){
         List<Car> queryCars = new ArrayList<>();
-        Set<String> usedParams = new HashSet<>();
+//        Set<String> usedParams = new HashSet<>();
+        Set<CarFilter> queryFilters = new HashSet<>();
         if(findCarCommand.getModel() != null){
-            usedParams.add("model");
+//            usedParams.add("model");
+            queryFilters.add(filterFactory.createModelFilter(findCarCommand.getModel()));
         }
         if(findCarCommand.getCategory() != null){
-            usedParams.add("category");
+//            usedParams.add("category");
+            queryFilters.add(filterFactory.createCategoryFilter(findCarCommand.getCategory()));
         }
-        if(findCarCommand.getFromYear() != null){
-            usedParams.add("fromYear");
+        if(findCarCommand.getFromYear() != null || findCarCommand.getToYear() != null){
+//            usedParams.add("year");
+            queryFilters.add(filterFactory.createYearFilter(findCarCommand.getFromYear(), findCarCommand.getToYear()));
         }
-        if(findCarCommand.getToYear() != null){
-            usedParams.add("toYear");
-        }
-        if(usedParams.isEmpty()){
+        if(queryFilters.isEmpty()){
             return queryCars;
         }
-        for (Car car: carsRepository) {
-            if ( (!usedParams.contains("model")|| car.getModel().toLowerCase().contains(findCarCommand.getModel()))
-            &(!usedParams.contains("category")|| car.getCategory().toLowerCase().contains(findCarCommand.getCategory()))
-            &(!usedParams.contains("fromYear")|| car.getYear() >= findCarCommand.getFromYear())
-            &(!usedParams.contains("toYear")|| car.getYear() <= findCarCommand.getToYear())){
+        for (Car car : carsRepository) {
+            boolean allFiltersTrue = true;
+            for (CarFilter carFilter : queryFilters){
+                if (!carFilter.match(car)){
+                    allFiltersTrue = false;
+                }
+            }
+            if (allFiltersTrue){
                 queryCars.add(car);
             }
         }
