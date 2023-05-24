@@ -3,7 +3,6 @@ package pl.bartek.searchcar.filter;
 import pl.bartek.searchcar.Car;
 
 public class YearFilter implements CarFilter{
-
     Integer fromYear;
     Integer toYear;
 
