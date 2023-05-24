@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bartek.searchcar.Car;
+import pl.bartek.searchcar.CarCategory;
+import pl.bartek.searchcar.CarModel;
 import pl.bartek.searchcar.filter.FilterFactory;
 import pl.bartek.searchcar.service.FindCarCommand;
 import pl.bartek.searchcar.service.SearchCarService;
@@ -19,8 +21,8 @@ public class SearchCarController {
 
     @GetMapping("/find-car")
     SearchCarResponse searchCar(
-            @RequestParam(name = "model", required = false)String model,
-            @RequestParam(name = "category",required = false) String category,
+            @RequestParam(name = "model", required = false) CarModel model,
+            @RequestParam(name = "category",required = false) CarCategory category,
             @RequestParam(name = "fromYear", required = false ) Integer fromYear,
             @RequestParam (name = "toYear", required = false) Integer toYear
     ) {

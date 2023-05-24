@@ -1,23 +1,26 @@
 package pl.bartek.searchcar.service;
 
+import pl.bartek.searchcar.CarCategory;
+import pl.bartek.searchcar.CarModel;
+
 public class FindCarCommand {
-    private final String model;
-    private final String category;
+    private final CarModel model;
+    private final CarCategory category;
     private final Integer fromYear;
     private final Integer toYear;
 
-    public FindCarCommand(String model, String category, Integer fromYear, Integer toYear) {
+    public FindCarCommand(CarModel model, CarCategory category, Integer fromYear, Integer toYear) {
         this.model = model;
         this.category = category;
         this.fromYear = fromYear;
         this.toYear = toYear;
     }
 
-    public String getModel() {
+    public CarModel getModel() {
         return model;
     }
 
-    public String getCategory() {
+    public CarCategory getCategory() {
         return category;
     }
 

@@ -3,9 +3,7 @@ package pl.bartek.searchcar.service;
 import pl.bartek.searchcar.Car;
 import pl.bartek.searchcar.filter.CarFilter;
 import pl.bartek.searchcar.filter.FilterFactory;
-import pl.bartek.searchcar.filter.ModelFilter;
 import java.util.*;
-import java.util.logging.Filter;
 
 public class SearchCarService {
     private final List<Car> carsRepository = new ArrayList<>();
@@ -28,19 +26,15 @@ public class SearchCarService {
 
     public List<Car> findCar(FindCarCommand findCarCommand){
         List<Car> queryCars = new ArrayList<>();
-//        Set<String> usedParams = new HashSet<>();
         Set<CarFilter> queryFilters = new HashSet<>();
         if(findCarCommand.getModel() != null){
-//            usedParams.add("model");
-            queryFilters.add(filterFactory.createModelFilter(findCarCommand.getModel()));
+            queryFilters.add(filterFactory.create(findCarCommand.getModel()));
         }
         if(findCarCommand.getCategory() != null){
-//            usedParams.add("category");
-            queryFilters.add(filterFactory.createCategoryFilter(findCarCommand.getCategory()));
+            queryFilters.add(filterFactory.create(findCarCommand.getCategory()));
         }
         if(findCarCommand.getFromYear() != null || findCarCommand.getToYear() != null){
-//            usedParams.add("year");
-            queryFilters.add(filterFactory.createYearFilter(findCarCommand.getFromYear(), findCarCommand.getToYear()));
+            queryFilters.add(filterFactory.create(findCarCommand.getFromYear(), findCarCommand.getToYear()));
         }
         if(queryFilters.isEmpty()){
             return queryCars;

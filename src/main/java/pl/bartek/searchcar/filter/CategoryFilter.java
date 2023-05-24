@@ -1,18 +1,19 @@
 package pl.bartek.searchcar.filter;
 
 import pl.bartek.searchcar.Car;
+import pl.bartek.searchcar.CarCategory;
 
 public class CategoryFilter implements CarFilter {
-    String category;
+    CarCategory category;
 
-    public CategoryFilter(String category) {
+    public CategoryFilter(CarCategory category) {
         this.category = category;
     }
 
     @Override
     public boolean match (Car car){
         String carCategory = car.getCategory();
-        return category != null && carCategory.toLowerCase().contains(category);
+        return category != null && carCategory.toLowerCase().contains(category.get());
     }
 
 }
