@@ -28,21 +28,21 @@ public class SearchCarService {
 
     public List<Car> findCar(FindCarCommand findCarCommand){
         List<Car> queryCars = new ArrayList<>();
-        Set<String> usedParams = new HashSet<>();
+//        Set<String> usedParams = new HashSet<>();
         Set<CarFilter> queryFilters = new HashSet<>();
         if(findCarCommand.getModel() != null){
-            usedParams.add("model");
+//            usedParams.add("model");
             queryFilters.add(filterFactory.createModelFilter(findCarCommand.getModel()));
         }
         if(findCarCommand.getCategory() != null){
-            usedParams.add("category");
+//            usedParams.add("category");
             queryFilters.add(filterFactory.createCategoryFilter(findCarCommand.getCategory()));
         }
         if(findCarCommand.getFromYear() != null || findCarCommand.getToYear() != null){
-            usedParams.add("year");
+//            usedParams.add("year");
             queryFilters.add(filterFactory.createYearFilter(findCarCommand.getFromYear(), findCarCommand.getToYear()));
         }
-        if(usedParams.isEmpty()){
+        if(queryFilters.isEmpty()){
             return queryCars;
         }
         for (Car car : carsRepository) {
