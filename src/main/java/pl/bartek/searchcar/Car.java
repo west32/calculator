@@ -7,6 +7,7 @@ public class Car {
     private final int year;
 
     public Car(String model, String category, int year) {
+
         this.model = model;
         this.category = category;
         this.year = year;
@@ -18,8 +19,9 @@ public class Car {
     public String getCategory() {
         return category;
     }
+
     public int getYear() {
+
         return year;
     }
-
 }
