@@ -6,6 +6,8 @@ public class SearchCarService {
     private final List<Car> carsRepository = new ArrayList<>();
 
     public SearchCarService() {
+        carsRepository.add(new Car("997","psiury2","1999"));
+        carsRepository.add(new Car("997","psiury","1999"));
         carsRepository.add(new Car("100","Wagon, Sedan", "1994"));
         carsRepository.add(new Car("100","Wagon, Sedan", "1993"));
         carsRepository.add(new Car("100","Wagon, Sedan", "1992"));
